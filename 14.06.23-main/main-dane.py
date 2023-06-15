@@ -6,36 +6,41 @@ from datetime import date
 from pandas_datareader import data as web
 import pandas as pd
 
+def sciaganiedanych():
+    aapl= yf.Ticker("aapl")
 
-aapl= yf.Ticker("aapl")
+    today = date.today()
 
-today = date.today()
+    # start = input("Wpisz date start: (format Y-m-d)") # dataframe start
+    # end = input("Wpisz date end: (format Y-m-d)") # dataframe end
 
-# start = input("Wpisz date start: (format Y-m-d)")
-# end = input("Wpisz date end: (format Y-m-d)")
+    # interval = input("Wpisz interwal: [1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo]") # inpput interval
+    start = "2023-05-01" # Tymczasowy Start
+    end="2023-06-14" # Tymczasowy End
+    interval = "1d" # Tymczasowy Interval
+    aapl_historical = aapl.history(start=start, end=end, interval=interval)
 
-# interval = input("Wpisz interwal: [1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo]")
-start = "2023-05-01"
-end="2023-06-14"
-interval = "1d"
-aapl_historical = aapl.history(start=start, end=end, interval=interval)
+    print(aapl_historical) # Print Historyczne dane
 
-print(aapl_historical)
+    ap = aapl_historical
 
-ap = aapl_historical
+    ap.to_csv('./data/AAPL.csv') # Konwersja do csv
 
-ap.to_csv('./data/AAPL.csv')
+    df = pd.read_csv("./data/AAPL.csv") # 
 
-df = pd.read_csv("./data/AAPL.csv")
-
-# jo=pd.read_csv("./data/AAPL.csv",usecols=["Close"])
-
-
-li = list(df['Close'])
+    # jo=pd.read_csv("./data/AAPL.csv",usecols=["Close"])
 
 
+    li = list(df['Close']) # Wydzielenie kolumny do listy
 
-print(li)
+
+
+    print(li) # Tymczasowy check 
+
+
+
+
+# Ponizej stary kod
 srednia = np.zeros(len(li)) + 1
 p = 0
 i = 0
