@@ -44,14 +44,16 @@ while t < len(li)-1:
     if q:
         if s>m[i]*l:
             print("SPRZEDAJ")
-            sygnaly.append(li[t])
+            sygnaly.append(li[t - 1])
             czassygnal.append(t)
+            # print(t) # - do sprawdzenia poprawnosci sygnalow
             q=False
     else:
         if s<m[i]*l:
             print("KUP")
-            sygnaly.append(li[t])
+            sygnaly.append(li[t - 1])
             czassygnal.append(t)
+            # print(t) # - do sprawdzenia poprawnosci sygnalow
             q=True
     i=(i+l-1)%l
     t += 1
