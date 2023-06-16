@@ -76,5 +76,5 @@ aapl['Close'].plot(figsize=(8,8), label='Cena AAPL')
 srednia['wartosc'].plot(figsize=(8,8), label="Wartosc Sredniej Kroczacej")
 plt.title('Wykres indeksu AAPL z srednia kroczaca')
 plt.legend(loc='lower right')
-plt.plot(czassygnal, sygnaly, marker='s')
+# plt.plot(czassygnal, sygnaly, marker='s') # eliminacja pojawiania sie sygnalow kupna/sprzedazy na wykresie z powodu ich tymczasowej niekompatybilności 
 plt.show()
